@@ -1,4 +1,4 @@
 Post Bar Info
 ================
 
-Information about post on admin bar
+Information about posts on admin bar
