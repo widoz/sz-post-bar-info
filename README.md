@@ -1,4 +1,4 @@
-sz-post-bar-info
+Post Bar Info
 ================
 
-Admin Bar post info
+Information about post on admin bar
