@@ -87,6 +87,9 @@ class SZ_Admin_Posts_Bar
 	 */
 	public function sz_init()
 	{
+		if( !is_admin_bar_showing() && !current_user_can('edit-posts') )
+			return;
+
 		wp_register_style( 'sz-admin-posts-bar', $this->css_url . '/style.css', null, '1.0', 'screen' );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'sz_enqueue_scripts' ) );
@@ -104,9 +107,6 @@ class SZ_Admin_Posts_Bar
 	 */
 	public function sz_admin_bar_menu()
 	{
-		if( !is_admin_bar_showing() )
-			return;
-
 		global $post, $pagenow, $wp_admin_bar;
 
 		if( is_admin() && ( $pagenow == 'post.php' ) || is_singular() )
