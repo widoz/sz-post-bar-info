@@ -129,7 +129,7 @@ class SZ_Admin_Posts_Bar
 			// Add top level menu
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-admin-posts-bar',
-				'title'  => __( 'Current Posts Info' ),
+				'title'  => __( 'Current Post' ) . ' : ' . $post->ID,
 				'parent' => null,
 				'href'   => $post_link['permalink'],
 				'meta'   => array(
