@@ -72,7 +72,7 @@ class SZ_Admin_Posts_Bar
 	{
 		global $pagenow;
 
-		if( $pagenow == 'post.php' || is_singular() )
+		if( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() )
 			wp_enqueue_style( 'sz-admin-posts-bar' );
 	}
 
@@ -109,7 +109,7 @@ class SZ_Admin_Posts_Bar
 	{
 		global $post, $pagenow, $wp_admin_bar;
 
-		if( is_admin() && ( $pagenow == 'post.php' ) || is_singular() )
+		if( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() )
 		{
 			// Get post author
 			$post_author = get_the_author_meta( 'user_nicename', $post->post_author );
