@@ -27,8 +27,8 @@
 // Prevent Direct Access
 if( ! defined( 'ABSPATH' ) ) exit;
 
-class SZ_Admin_Posts_Bar
-{
+class SZ_Admin_Posts_Bar {
+
 	/**
 	 * Class Instance
 	 *
@@ -60,35 +60,31 @@ class SZ_Admin_Posts_Bar
 	private $css_url;
 
 	/**
-	 * Sz Enqueue Scripts
+	 * Enqueue Scripts
 	 *
 	 * @since  1.0
-	 * @version 1.0
 	 *
-	 * @param  null
 	 * @return void
 	 */
-	public function sz_enqueue_scripts()
-	{
+	public function sz_enqueue_scripts() {
 		global $pagenow;
 
-		if( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() )
+		if( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() ) {
 			wp_enqueue_style( 'sz-admin-posts-bar' );
+		}
 	}
 
 	/**
 	 * Plugin Init
 	 *
 	 * @since   1.0
-	 * @version 1.0
 	 *
-	 * @param  null
 	 * @return void
 	 */
-	public function sz_init()
-	{
-		if( !is_admin_bar_showing() && !current_user_can('edit-posts') )
+	public function sz_init() {
+		if( !is_admin_bar_showing() && !current_user_can('edit-posts') ) {
 			return;
+		}
 
 		wp_register_style( 'sz-admin-posts-bar', $this->css_url . '/style.css', null, '1.0', 'screen' );
 
@@ -100,28 +96,21 @@ class SZ_Admin_Posts_Bar
 	 * Add admin bar Nodes and groups
 	 *
 	 * @since   1.0
-	 * @version 1.0
 	 *
-	 * @param  null
 	 * @return void
 	 */
-	public function sz_admin_bar_menu()
-	{
+	public function sz_admin_bar_menu() {
 		global $post, $pagenow, $wp_admin_bar;
 
-		if( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() )
-		{
+		if( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() ) {
 			// Get post author
 			$post_author = get_the_author_meta( 'user_nicename', $post->post_author );
 
 			// Get post link based on context
-			if( is_admin() )
-			{
+			if( is_admin() ) {
 				$post_link['permalink'] = get_permalink( $post->ID );
 				$post_link['title']     = __( 'Show post page' );
-			}
-			else
-			{
+			} else {
 				$post_link['permalink'] = 'post.php?post=' . $post->ID . 'action=edit';
 				$post_link['title']     = __( 'Edit post' );
 			}
@@ -135,7 +124,7 @@ class SZ_Admin_Posts_Bar
 				'meta'   => array(
 					'class'  => 'sz-admin-posts-bar',
 					'title'  => $post_link['title'],
-					'target' => '_blank'
+					'target' => '_blank',
 				)
 			) );
 
@@ -149,63 +138,63 @@ class SZ_Admin_Posts_Bar
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-id',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post ID:' ) . ' ' . '<span class="blue">' . $post->ID . '</span>'
+				'title'  => __( 'Post ID:' ) . ' ' . '<span class="blue">' . $post->ID . '</span>',
 			) );
 
 			// Post Title
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-title',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Title:' ) . ' ' . '<span class="gray">' . $post->post_title . '</span>'
+				'title'  => __( 'Post Title:' ) . ' ' . '<span class="gray">' . $post->post_title . '</span>',
 			) );
 
 			// Post Author
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-author',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Author:') . ' ' . '<span class="gray">' . ucfirst( $post_author ) . '</span>'
+				'title'  => __( 'Post Author:') . ' ' . '<span class="gray">' . ucfirst( $post_author ) . '</span>',
 			) );
 
 			// Post Status
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-status',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Status:' ) . ' ' . '<span class="gray">' . ucfirst( $post->post_status ) . '</span>'
+				'title'  => __( 'Post Status:' ) . ' ' . '<span class="gray">' . ucfirst( $post->post_status ) . '</span>',
 			) );
 
 			// Comment Status
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-comment-status',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Comment Status:' ) . ' ' . '<span class="gray">' . $post->comment_status . '</span>'
+				'title'  => __( 'Post Comment Status:' ) . ' ' . '<span class="gray">' . $post->comment_status . '</span>',
 			) );
 
 			// Post modified
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-modified',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Modified:' ) . ' ' . '<span class="gray">' . $post->post_modified . '</span>'
+				'title'  => __( 'Post Modified:' ) . ' ' . '<span class="gray">' . $post->post_modified . '</span>',
 			) );
 
 			// Post Parent
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-parent',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Parent:' ) . ' ' . '<span class="gray">' . $post->post_parent . '</span>'
+				'title'  => __( 'Post Parent:' ) . ' ' . '<span class="gray">' . $post->post_parent . '</span>',
 			) );
 
 			// Menu Order
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-order',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Order:' ) . ' ' . '<span class="gray">' . $post->menu_order . '</span>'
+				'title'  => __( 'Post Order:' ) . ' ' . '<span class="gray">' . $post->menu_order . '</span>',
 			) );
 
 			// Post Type
 			$wp_admin_bar->add_node( array(
 				'id'     => 'sz-post-type',
 				'parent' => 'sz-post-info-group',
-				'title'  => __( 'Post Type:' ) . ' ' . '<span class="gray">' . ucfirst( $post->post_type ) . '</span>'
+				'title'  => __( 'Post Type:' ) . ' ' . '<span class="gray">' . ucfirst( $post->post_type ) . '</span>',
 			) );
 		}
 	}
@@ -213,10 +202,10 @@ class SZ_Admin_Posts_Bar
 	/**
 	 * Class Singleton
 	 */
-	public static function get_instance()
-	{
-		if( ! self::$sz_admin_posts_bar )
+	public static function get_instance() {
+		if( ! self::$sz_admin_posts_bar ) {
 			self::$sz_admin_posts_bar = new self;
+		}
 
 		return self::$sz_admin_posts_bar;
 	}
@@ -224,8 +213,7 @@ class SZ_Admin_Posts_Bar
 	/**
 	 * Constructor
 	 */
-	private function __construct()
-	{
+	private function __construct() {
 		$this->plugin_path = untrailingslashit( plugin_dir_path( dirname( __FILE__ ) ) );
 		$this->css_url     = plugins_url( 'css', __FILE__ );
 
