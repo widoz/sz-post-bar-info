@@ -111,7 +111,7 @@ class SZ_Admin_Posts_Bar {
 				$post_link['permalink'] = get_permalink( $post->ID );
 				$post_link['title']     = __( 'Show post page' );
 			} else {
-				$post_link['permalink'] = 'post.php?post=' . $post->ID . 'action=edit';
+				$post_link['permalink'] = admin_url( 'post.php?post=' . $post->ID . '&amp;action=edit' );
 				$post_link['title']     = __( 'Edit post' );
 			}
 
