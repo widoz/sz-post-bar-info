@@ -102,7 +102,7 @@ class SZ_Admin_Posts_Bar {
 	public function sz_admin_bar_menu() {
 		global $post, $pagenow, $wp_admin_bar;
 
-		if( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() ) {
+		if( ( ( is_admin() && ( $pagenow == 'post.php' ) ) || is_singular() ) && is_admin_bar_showing() ) {
 			// Get post author
 			$post_author = get_the_author_meta( 'user_nicename', $post->post_author );
 
