@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Admin Posts Bar
  * Description: A plugin which show posts info on admin bar
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Guido Scialfa
  * Author URI:  http://www.guidoscialfa.com
  * License:     GPL2
