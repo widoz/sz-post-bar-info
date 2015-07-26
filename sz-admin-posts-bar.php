@@ -7,7 +7,7 @@
  * Author URI:  http://www.guidoscialfa.com
  * License:     GPL2
  *
- *    Copyright (C) 2013  Guido Scialfa <dev@guidoscialfa.com>
+ *    Copyright (C) 2013  Guido Scialfa
  *
  *    This program is free software; you can redistribute it and/or
  *    modify it under the terms of the GNU General Public License
