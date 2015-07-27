@@ -4,11 +4,8 @@
  * Admin Posts Bar Css
  *
  * author:  Guido Scialfa
- * version: 1.0
+ * version: 1.0.1
  */
-
-.gray {
-	color: #bbb }
-
-.blue {
-	color: #2ea2cc; }
+.sz-item {
+	color : #fff;
+}
